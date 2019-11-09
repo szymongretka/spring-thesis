@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All players</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Players </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> Id </th>
+                    <th> Surname </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${players.empty}">
+                    <td colspan="2"> No Books Available </td>
+                </tr>
+                <tr th:each="player : ${players}">
+                    <td><span th:text="${player.id}"> ID </span></td>
+                    <td><span th:text="${player.nickname}"> Name </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style type='text/css'>
+        #profile_leftPanel {
+            width: 200px;
+            float: left;
+
+            margin-right: 20px;
+        }
+        #profile_rightPanel_center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        #recentStatus {
+            width: 400px;
+            text-align: center;
+            display: inline;
+        }
+        .button:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+        .button {
+            background-color: #555555;
+            width: 200px;
+            border: none;
+            color: white;
+            padding: 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body background="https://i.imgur.com/ZthVPK4.png">
+<nav class="navbar navbar-expand-sm bg-light">
+    <ul class="navbar-nav navbar-left">
+        <div class="container">
+        <button type="button pull-right" class="btn btn-primary btn-md" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
+        </div>
+    </ul>
+
+</nav>
+<br>
+<div id="demo" class="collapse">
+    <div id="profile_leftPanel" class="btn-group-vertical">
+        <button type="button" class="button" >Top Score</button>
+        <button type="button" class="button" >Spaceship</button>
+        <button type="button" class="button" >Player Details</button>
+        <button type="button" class="button" >Credits</button>
+    </div>
+</div>
+<!-- leftPanel end -->
+<div id="profile_rightPanel">
+    <div id="profile_rightPanel_center">
+        <!--<div id="recentStatus">
+            <a class='recentStatus' href=''>Information</a>
+        </div>
+        <br>This is a test. This is a test. This is a test.
+        This is a test. This is a test. This is a test.
+        This is a test. This is a test. This is a test.
+        This is a test. This is a test. This is a test.
+        This is a test. This is a test. This is a test.
+        This is a test. This is a test. This is a test.
+    </div>-->
+    <!-- _center end -->
+</div>
+</body>
+</html>
