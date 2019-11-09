@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-sm bg-light">
     <ul class="navbar-nav navbar-left">
         <div class="container">
-        <button type="button pull-right" class="btn btn-primary btn-md" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
+            <button type="button pull-right" class="btn btn-primary btn-md" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars"></i></button>
         </div>
     </ul>
 
@@ -26,7 +26,7 @@
 <br>
 <div id="demo" class="collapse">
     <div id="profile_leftPanel" class="btn-group-vertical">
-        <button onclick="location.href='http://localhost:8080/highScore'" type="button" class="button" >Top Score</button>
+        <button onclick="location.href='http://localhost:8080'" type="button" class="button" >Home</button>
         <button type="button" class="button" >Spaceship</button>
         <button type="button" class="button" >Player Details</button>
         <button type="button" class="button" >Credits</button>
@@ -35,7 +35,28 @@
 <!-- leftPanel end -->
 <div id="profile_rightPanel">
     <div id="profile_rightPanel_center">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table" align="center">
+                    <thead>
+                    <tr>
+                        <th> Nickname </th>
+                        <th> Score </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${topPlayers.empty}">
+                        <td colspan="2"> No active players found </td>
+                    </tr>
+                    <tr th:each="topPlayer : ${topPlayers}">
+                        <td><span th:text="${topPlayer.nickname}"> Nickname </span></td>
+                        <td><span th:text="${topPlayer.score}"> Score </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
     </div>
     <!-- _center end -->
 </div>
