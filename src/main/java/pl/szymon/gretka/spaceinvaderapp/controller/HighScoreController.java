@@ -19,6 +19,7 @@ public class HighScoreController {
     @GetMapping
     public String getTopPlayers(Model model) {
         model.addAttribute("topPlayers", playerRepository.findAllByOrderByScoreDesc());
+        System.out.println("as");
         return "topscore/topscore";
     }
 
