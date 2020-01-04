@@ -1,13 +1,9 @@
 package pl.szymon.gretka.spaceinvaderapp.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "PLAYER")
@@ -22,27 +18,27 @@ public class Player implements Serializable {
     @Column(name = "nickname")
     private String nickname;
 
-    @NotBlank
     @Column(name = "password")
     private String password;
 
     @Column(name = "score")
     private Long score;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "player")
-    //@JsonBackReference
-    private Set<Spaceship> spaceships = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "Player_Spaceship",
+            joinColumns = { @JoinColumn(name = "player_id") },
+            inverseJoinColumns = { @JoinColumn(name = "spaceship_id") }
+    )
+    private List<Spaceship> spaceships = new ArrayList<>();
 
-    public Player addSpaceship(Spaceship spaceship){
-        spaceship.setPlayer(this);
-        this.spaceships.add(spaceship);
-        return this;
+    public Player(@NotBlank String nickname, Long score) {
+        this.nickname = nickname;
+        this.score = score;
     }
 
-    public Player(@NotBlank String nickname, @NotBlank String password, Long score) {
+    public Player(@NotBlank String nickname) {
         this.nickname = nickname;
-        this.password = password;
-        this.score = score;
     }
 
 
@@ -80,15 +76,20 @@ public class Player implements Serializable {
         this.score = score;
     }
 
+    public List<Spaceship> getSpaceships() {
+        return spaceships;
+    }
+
+    public void setSpaceships(List<Spaceship> spaceships) {
+        this.spaceships = spaceships;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Player)) return false;
         Player player = (Player) o;
-        return id.equals(player.id) &&
-                nickname.equals(player.nickname) &&
-                password.equals(player.password) &&
-                Objects.equals(score, player.score);
+        return id.equals(player.id);
     }
 
     @Override

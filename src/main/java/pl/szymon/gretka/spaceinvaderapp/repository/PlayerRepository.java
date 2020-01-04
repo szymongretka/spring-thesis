@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-    List<Player> findAllByOrderByScoreDesc();
+    List<Player> findFirst10ByOrderByScoreDesc();
+    Player findByNickname(String nickname);
 }
